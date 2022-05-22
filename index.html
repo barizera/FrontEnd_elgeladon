@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <title>El Geladon</title>
+  </head>
+  <body>
+    <div class="Home">
+      <header class="Header">
+        <div class="Header__container">
+          <div id="logo__container">
+            <img src="./assets/icons/logo.svg" width="70px" height="" alt="" />
+            <h2 id="text_logo">El Geladon</h2>
+          </div>
+          <img
+            class="icon_sacola"
+            src="./assets/icons/sacola.svg"
+            width="40px"
+            height=""
+            alt=""
+          />
+        </div>
+      </header>
+      <h2>Pesquisar Paleta</h2>
+      <div class="searchPaleta">
+        <div class="searchPaleta__container">
+          <input
+            type="number"
+            id="inputIdPaleta"
+            placeholder="Digite o ID da Paleta e clique em escolher"
+          />
+          <button onclick="PrintChosedPaleta()">Escolher</button>
+          <div class="SearchedPaleta" id="searchedPaleta"></div>
+        </div>
+      </div>
+
+      <h2>Nossa Paletas:</h2>
+      <div class="home_container">
+        <div class="PaletaList" id="paletaList"></div>
+      </div>
+    </div>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>

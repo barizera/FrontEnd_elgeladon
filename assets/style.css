@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+:root {
+  --cor01: #4c1e4f;
+  --cor02: #db3069;
+  --cor03: #ffa0fd;
+  --cor04: #7ebc89;
+  --cor05: #54defd;
+}
+
+body,
+html {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: auto;
+  background-color: rgb(255, 255, 255);
+}
+
+.Home {
+  position: relative;
+  background-image: radial-gradient(
+    farthest-corner at 40px 40px,
+    #7ebc89 60%,
+    #ffa0fd 100%
+  );
+  min-height: calc(100vh - 30px);
+  margin: 15px;
+  padding: 15px;
+  border-radius: 20px;
+  color: black;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.Home > h2 {
+  display: flex;
+  justify-content: space-around;
+  color: #4c1e4f;
+  font-size: 35px;
+}
+#text_logo {
+  color: #4c1e4f;
+  font-family: "Handlee", cursive;
+  font-size: 40px;
+}
+.Home > div {
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+
+.Home__container {
+  grid: 3;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+@media (max-width: 350px) {
+  .Home__container {
+    justify-content: unset;
+  }
+}
+
+.PaletaList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px 50px;
+}
+
+@media (max-width: 1220px) {
+  .PaletaList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 840px) {
+  .PaletaList {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cardPaleta {
+  font-family: "Exo";
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  width: 315px;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  height: 150px;
+}
+
+.cardPaleta_infos {
+  color: #4c1e4f;
+}
+
+@media (max-width: 400px) {
+  .cardPaleta,
+  .cardPaleta__infos {
+    width: 210px;
+    height: 180px;
+  }
+}
+
+.cardPaleta > div,
+.cardPaleta__infos > div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.cardPaleta__infos > h4 {
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.cardPaleta__infos > p {
+  font-size: 0.85em;
+}
+
+.cardPaleta__infos > span {
+  color: darkviolet;
+}
+
+.cardPaleta > img {
+  height: 150px;
+  margin-right: -60px;
+}
+
+.Header {
+  height: 12vh;
+  align-items: center;
+  padding: 0 20vw;
+}
+
+.Header > .Header__container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header > .Header__container > div {
+  display: flex;
+  align-items: center;
+  font-size: x-large;
+  background-color: #ffffff4d;
+  width: 250px;
+  height: 7vh;
+  border-radius: 10px;
+  position: relative;
+}
+
+.Header > .Header__container > div > img {
+  position: absolute;
+  left: -25px;
+  top: -10px;
+}
+
+.Header > .Header__container > div > h2 {
+  position: absolute;
+  left: 50px;
+  white-space: nowrap;
+}
+
+.searchPaleta {
+  width: 100%;
+}
+
+.searchPaleta > .searchPaleta__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  min-height: 280px;
+}
+
+.searchPaleta > .searchPaleta__container > input {
+  border: none;
+  margin: 1rem 0;
+  padding: 8px 6px;
+  border-radius: 3px;
+  width: 200px;
+  outline: none;
+}
+
+.searchPaleta > .searchPaleta__container > button {
+  background-color: #7ebc89;
+  border-radius: 3px;
+  border: 2px outset #4c1e4f;
+  color: #4c1e4f;
+  font-size: larger;
+  font-weight: 700;
+  height: 33px;
+  padding: 5px;
+  width: 100px;
+  box-shadow: 1px 1px 5px black;
+}
+
+.searchPaleta > .searchPaleta__container > button:hover {
+  background-color: #4c1e4f;
+  color: white;
+  transition: 0.5s;
+}
