@@ -1,4 +1,4 @@
-// Base url
+// Variável auxiliar
 const baseUrl = "http://localhost:3000/paletas";
 
 const gettAllPaletas = async () => {
@@ -21,13 +21,18 @@ const getPaletaById = async (id) => {
   return paleta;
 };
 
-const createPaleta = async (sabor, descricao, foto, preco) => {
+const createPaleta = async () => {
+  const sabor = document.querySelector("#sabor").value 
+  const descricao = document.querySelector("#descricao").value
+  const foto = document.querySelector("#foto").value 
+  const preco = document.querySelector("#preco").value 
   const paleta = {
     sabor,
     descricao,
     foto,
     preco,
   };
+
   const res = await fetch(`${baseUrl}/createPaleta`, {
     method: "POST",
     headers: {
@@ -36,19 +41,28 @@ const createPaleta = async (sabor, descricao, foto, preco) => {
     mode: "cors",
     body: JSON.stringify(paleta),
   });
+  console.log(res.body);
+  console.log(paleta);
+  const novaPaleta = await res.json();
 
-  const newPaleta = await res.json();
-  return newPaleta;
+  return novaPaleta;
 };
 
-const updatePaleta = async (sabor, descricao, foto, preco) => {
+const updatePaleta = async () => {
+  
+  document.querySelector("#id").value = paleta.id;
+  document.querySelector("#sabor").value = paleta.sabor;
+  document.querySelector("#descricao").value = paleta.descricao;
+  document.querySelector("#foto").value = paleta.foto;
+  document.querySelector("#preco").value = paleta.preco;
+  
   const paleta = {
+    id,
     sabor,
     descricao,
     foto,
     preco,
   };
-
   const res = await fetch(`${baseUrl}/updatePaleta/:id`, {
     method: "PUT",
     headers: {
@@ -82,12 +96,15 @@ const printAllPaleta = async () => {
     document.querySelector("#paletaList").insertAdjacentHTML(
       "beforeend",
       `
-      <div>
-      <div class="cardPaleta">
+      <div class="cardPaleta" id="cardPaleta_${paletas.id}">
           <div class="cardPaleta_infos">
               <h4>${paletas.sabor}</h4>
-              <span>R$${paletas.preco.toFixed(2)}</span>
+              <span>R$${paletas.preco}</span>
               <h4>${paletas.descricao}</h4>
+              <div class="PaletaListaItem__acoes Acoes">
+                 <button class="Acoes__editar btn" onclick="openModalCreate(${paletas.id})">Editar</i></button> 
+                 <button class="Acoes__apagar btn")">Apagar</button> 
+              </div>  
           </div>
           <img src=${paletas.foto} alt=${paletas.sabor}/>
       </div>
@@ -119,11 +136,41 @@ const PrintChosedPaleta = async () => {
     <div class="cardPaleta">
       <div class="cardPaleta_infos">
           <h4>${paleta.sabor}</h4>
-          <span>R$${paleta.preco.toFixed(2)}</span>
+          <span>R$${paleta.preco}</span>
           <h4>${paleta.descricao}</h4>
       </div>
       <img src=${paleta.foto} alt=${paleta.sabor}/>
     </div>
     `;
   }
+};
+
+const openModalCreate = async (id = 0) => {
+  document.querySelector(".Modal_overlay").style.display = "flex";
+  if (id != 0) {
+    document.querySelector("#title_header_modal").innerText =
+      "Atualizar Paleta";
+    document.querySelector("#button_form_modal").innerText = "Atualizar";
+    document
+      .querySelector("#button_form_modal")
+      .setAttribute("onclick", "updatePaleta()");
+
+    const res = await fetch(`${baseUrl}/get-paleta/${id}`);
+    const paleta = await res.json();
+
+  
+  } else {
+    document.querySelector("#title_header_modal").innerText =
+      "Cadastre uma Paleta";
+    document.querySelector("#button_form_modal").innerText = "Cadastrar";
+  }
+};
+
+const fecharModalCreate = () => {
+  document.querySelector(".Modal_overlay").style.display = "none";
+
+  document.querySelector("#sabor").value = "";
+  document.querySelector("#preco").value = 0;
+  document.querySelector("#descricao").value = "";
+  document.querySelector("#foto").value = "";
 };

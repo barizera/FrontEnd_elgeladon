@@ -24,7 +24,18 @@
           />
         </div>
       </header>
+      <div>
+        <section class="button-modal-create"></section>
+      </div>
       <h2>Pesquisar Paleta</h2>
+      <button
+        type="button"
+        class="default-button"
+        id="default_button"
+        onclick="openModalCreate()"
+      >
+        Cadastrar Paleta
+      </button>
       <div class="searchPaleta">
         <div class="searchPaleta__container">
           <input
@@ -32,10 +43,51 @@
             id="inputIdPaleta"
             placeholder="Digite o ID da Paleta e clique em escolher"
           />
-          <button onclick="PrintChosedPaleta()">Escolher</button>
+          <button onclick="PrintChosedPaleta()">Pesquisar</button>
           <div class="SearchedPaleta" id="searchedPaleta"></div>
         </div>
       </div>
+
+      <section class="Modal_overlay" id="modal_overlay">
+        <div class="Modal">
+          <div class="Header_modal">
+            <h2 id="title_header_modal">Cadastrar Paleta</h2>
+            <a class="Close_modal" onclick="fecharModalCreate()" href="">x</a>
+          </div>
+          <div class="Body_modal">
+            <div>
+              <input type="hidden" id="id" />
+              <input
+                name="sabor"
+                type="text"
+                id="sabor"
+                placeholder="digite o sabor..."
+              />
+              <input
+                name="preco"
+                type="number"
+                id="preco"
+                placeholder="digite o preço..."
+              />
+              <input
+                name="descricao"
+                type="text"
+                id="descricao"
+                placeholder="digite a descrição..."
+              />
+              <input
+                name="foto"
+                type="text"
+                id="foto"
+                placeholder="digite o caminho da imagem..."
+              />
+              <button id="button_form_modal" onclick="createPaleta()">
+                Cadastrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <h2>Nossa Paletas:</h2>
       <div class="home_container">
